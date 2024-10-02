@@ -6,7 +6,8 @@
 // Homework 4
 //----------------------------------------------------------------------------
 import 'package:flutter/material.dart';
-import 'pages/home.dart';
+import 'package:hw4/widgets/bank.dart';
+import 'models/vault.dart';
 import 'routes.dart';
 
 void main() {
@@ -26,8 +27,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // Create a persistent Vault so changes to the user's balance, etc. do not disappear
-  // FIXME: Uncomment after implementation
-  // final Vault vault = Vault();
+  final Vault vault = Vault();
 
   // Keep a copy of the wrapper widget's key so children kind find this state instance
   final GlobalKey<_MyAppState> appKey;
@@ -45,21 +45,24 @@ class _MyAppState extends State<MyApp> {
     // first route (the home route) should be: '/' => MainScaffold(title: 'Currency Quest', child: HomePage() ),
     // You will need to add your three pages as similar routes (with different names
 
-    return MaterialApp(
-      title: "testing",
-      theme: ThemeData(
-          colorScheme: const ColorScheme(
-              brightness: Brightness.light,
-              primary: Colors.yellow,
-              onPrimary: Colors.white,
-              secondary: Colors.yellowAccent,
-              onSecondary: Colors.white,
-              error: Colors.red,
-              onError: Colors.black,
-              surface: Colors.blue,
-              onSurface: Colors.white)),
-      routes: routes,
-      initialRoute: '/',
+    return Bank(
+      appKey: appKey,
+      vault: vault,
+      child: MaterialApp(
+        title: "testing",
+        theme: ThemeData(
+            colorScheme: const ColorScheme(
+                brightness: Brightness.light,
+                primary: Colors.yellow,
+                onPrimary: Colors.white,
+                secondary: Colors.yellowAccent,
+                onSecondary: Colors.white,
+                error: Colors.red,
+                onError: Colors.black,
+                surface: Colors.blue,
+                onSurface: Colors.white)),
+        routes: routes,
+      ),
     );
   }
 }
@@ -92,11 +95,10 @@ class MainScaffold extends StatelessWidget {
         actions: [
           // Back to Home button
           ElevatedButton(
-            onPressed: () => home(context),
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
-            child:
-                const Text("Dashboard", style: TextStyle(color: Colors.black)),
-          )
+              onPressed: () => home(context),
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Colors.lightBlue),
+              child: Icon(Icons.home))
         ],
       ),
       // Current Page to Display
@@ -105,15 +107,15 @@ class MainScaffold extends StatelessWidget {
         selectedIndex: 0,
         indicatorColor: Colors.transparent,
         destinations: const [
-          // Home button
-          NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-          // Bed button
-          NavigationDestination(icon: Icon(Icons.bed), label: "Bed"),
-          // Star button
-          NavigationDestination(icon: Icon(Icons.star), label: "Star"),
+          // Currency 1 Button
+          NavigationDestination(icon: Icon(Icons.shop), label: "Home"),
+          // Currency 2 Button
+          NavigationDestination(icon: Icon(Icons.shop_2), label: "Bed"),
+          // Currency 3 Button
+          NavigationDestination(icon: Icon(Icons.shop), label: "Star"),
         ],
         onDestinationSelected: (index) =>
-            Navigator.pushReplacementNamed(context, paths[index]),
+            Navigator.pushReplacementNamed(context, paths[index + 1]),
       ),
     );
   }
