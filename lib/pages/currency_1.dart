@@ -33,8 +33,7 @@ class Currency1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Currency 1 Page",
-                  style: TextStyle(color: Colors.black, fontSize: 20)),
+              Text("Currency 1 Page", style: TextStyle(fontSize: 20)),
             ],
           ),
         ),

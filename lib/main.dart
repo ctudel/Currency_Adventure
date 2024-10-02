@@ -54,12 +54,12 @@ class _MyAppState extends State<MyApp> {
             colorScheme: const ColorScheme(
                 brightness: Brightness.light,
                 primary: Colors.yellow,
-                onPrimary: Colors.white,
+                onPrimary: Colors.black,
                 secondary: Colors.yellowAccent,
                 onSecondary: Colors.white,
                 error: Colors.red,
                 onError: Colors.black,
-                surface: Colors.blue,
+                surface: Colors.deepPurple,
                 onSurface: Colors.white)),
         routes: routes,
       ),
@@ -96,8 +96,8 @@ class MainScaffold extends StatelessWidget {
           // Back to Home button
           ElevatedButton(
               onPressed: () => home(context),
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Colors.lightBlue),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepOrangeAccent),
               child: Icon(Icons.home))
         ],
       ),
@@ -108,11 +108,14 @@ class MainScaffold extends StatelessWidget {
         indicatorColor: Colors.transparent,
         destinations: const [
           // Currency 1 Button
-          NavigationDestination(icon: Icon(Icons.shop), label: "Home"),
+          NavigationDestination(
+              icon: Icon(Icons.shop, color: Colors.yellow), label: "Home"),
           // Currency 2 Button
-          NavigationDestination(icon: Icon(Icons.shop_2), label: "Bed"),
+          NavigationDestination(
+              icon: Icon(Icons.shop_2, color: Colors.yellow), label: "Bed"),
           // Currency 3 Button
-          NavigationDestination(icon: Icon(Icons.shop), label: "Star"),
+          NavigationDestination(
+              icon: Icon(Icons.shop, color: Colors.yellow), label: "Star"),
         ],
         onDestinationSelected: (index) =>
             Navigator.pushReplacementNamed(context, paths[index + 1]),
@@ -120,5 +123,11 @@ class MainScaffold extends StatelessWidget {
     );
   }
 }
+
+// Container Border
+final BoxDecoration border = BoxDecoration(
+    color: Colors.white,
+    border: Border.all(color: Colors.yellow, width: 2),
+    borderRadius: BorderRadius.circular(20));
 
 // Total points: 60

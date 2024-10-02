@@ -28,14 +28,16 @@ class Bank extends InheritedWidget {
   }
 
   bool buy(final String item, final double amount) {
+    // Calling setState() will force Flutter to update dependent child widgets
+    appKey.currentState?.setState(() {});
+
     if (vault.buy(item, amount)) {
-      // Calling setState() will force Flutter to update dependent child widgets
-      appKey.currentState?.setState(() {});
       // TODO: Play a sound to indicate the purchase succeeded. (15 pts)
       return true;
+    } else {
+      // TODO: Play a sound to indicate the purchase failed. (15 pts)
+      return false;
     }
-    // TODO: Play a sound to indicate the purchase failed. (15 pts)
-    return false;
   }
 
   //**************************************************************************************************
