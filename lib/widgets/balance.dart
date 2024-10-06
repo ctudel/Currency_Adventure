@@ -12,6 +12,8 @@ class Balance extends StatefulWidget {
 }
 
 class _BalanceState extends State<Balance> {
+  double? _amount = 0;
+
   @override
   Widget build(BuildContext context) {
     final Bank bank = Bank.of(context);
@@ -43,10 +45,7 @@ class _BalanceState extends State<Balance> {
                       elevation: 4,
                     ),
                     onPressed: () {
-                      // FIXME: deposit with user input on dialogue
-                      bank.deposit(5);
-                      // Calling setState() will force Flutter to update dependent child widgets
-                      setState(() {});
+                      _depositDialog(context);
                     },
                     child: const Text("Deposit",
                         style: TextStyle(color: Colors.black, fontSize: 26)),
@@ -64,5 +63,86 @@ class _BalanceState extends State<Balance> {
         ),
       ),
     );
+  }
+
+// TODO: Implement the helper method _depositDialog(). (100 pts)
+// Take the BuildContext as a parameter named context
+// Return a Future<void>
+// Create a final local var called _keyForm which is set to a GlobalKey<FormState>() instance
+// Call the showDialog() function with the following param values:
+//   The builder parameter should be set to an anonymous function that implements the following structure:
+//     return an AlertDialog with the following params:
+//       title set to a Form widget with the following params:
+//          key set to _keyForm
+//          child set to a TextFormField that is setup to accept a decimal input and has the following params:
+//              onSaved set to a function that gets the instance of the Bank and calls Bank.deposit() with the value from the form (if non-null)
+//              validator set to a function that returns an error string if the amount is empty or cannot be parsed as a double, otherwise returns null
+//              Note: for onSaved and validator functions consider double.tryParse() which doesn't throw an exception if parsing fails (instead returns null)
+//       actions set to a list with two buttons:
+//           a save button that when pressed calls _keyForm.currentState.validate() (if _keyForm.currentState is not null)
+//               and if validate() returns true
+//                   calls _keyForm.currentState.save() (if _keyForm.currentState is not null)
+//                   calls Navigator.pop(context)
+//           a cancel button that when pressed calls Navigator.pop(context)
+  Future<void> _depositDialog(BuildContext context) {
+    final GlobalKey<FormState> keyForm = GlobalKey<FormState>();
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            // Form for user input
+            title: Column(
+              children: [
+                // Text('Amount:'),
+                Form(
+                    key: keyForm,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                          hintText: 'Enter amount to deposit in USD'),
+                      validator: (String? value) {
+                        double? userIn = double.tryParse(value.toString());
+                        if (value.toString().isEmpty ||
+                            userIn == null ||
+                            userIn < 0) {
+                          return 'Please enter a valid amount';
+                        }
+                        return null;
+                      },
+                      onSaved: (String? value) {
+                        double? amount = double.tryParse(value.toString());
+                        _amount =
+                            amount ?? 0; // if invalid input, deposit 0 onSaved
+                      },
+                    )),
+              ],
+            ),
+            // Action buttons
+            actions: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FilledButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Cancel')),
+                  FilledButton(
+                      onPressed: () {
+                        if (keyForm.currentState != null &&
+                            keyForm.currentState!.validate()) {
+                          keyForm.currentState!.save();
+                          Bank.of(context).deposit(_amount ?? 0);
+                          setState(() {});
+                        }
+                        if (keyForm.currentState != null)
+                          Navigator.pop(context);
+                      },
+                      child: const Text('Submit')),
+                ],
+              ),
+            ],
+          );
+        });
   }
 }
