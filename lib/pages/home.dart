@@ -13,7 +13,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/balance.dart';
 import '../widgets/purchased_items.dart';
-import '../widgets/bank.dart';
 
 // TODO: Create a stateless widget to display the home page. (30 pts)
 // In your build method, you will need to get the Bank instance by calling Bank.of(context). Once you have it
@@ -26,24 +25,32 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(10),
-        child: Column(
+        padding: const EdgeInsets.all(10),
+        color: Color.fromRGBO(255, 255, 255, 0.8),
+        child: const Column(
           children: [
             // Balance
             Balance(),
             SizedBox(height: 10),
             // Purchased Items
-            const PurchasedItems(),
+            PurchasedItems(),
           ],
         ));
   }
 }
 
-// Container Border
-final BoxDecoration border = BoxDecoration(
-    color: Colors.white,
-    border: Border.all(color: Colors.yellow, width: 2),
-    borderRadius: BorderRadius.circular(20));
+// Background Image
+const BoxDecoration background = BoxDecoration(
+    image: DecorationImage(
+        image: AssetImage('assets/home.jpg'),
+        fit: BoxFit.cover,
+        alignment: Alignment.bottomLeft));
+
+// Header Text
+const TextStyle textStyle =
+    TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.w400);
+
+const Color cardColor = Color.fromRGBO(255, 255, 255, 0.9);
 
 
 // Total points: 130

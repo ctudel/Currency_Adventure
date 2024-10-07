@@ -25,20 +25,30 @@ class Currency1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: const Row(
+    return Column(
       children: [
+        Container(
+          padding: EdgeInsets.all(20),
+          child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            Image.asset('assets/pokeball.png', width: 50, height: 50),
+            Text("100", style: TextStyle(fontSize: 20)),
+          ]),
+        ),
         Expanded(
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Currency 1 Page", style: TextStyle(fontSize: 20)),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Currency 1 Page", style: TextStyle(fontSize: 20)),
+                ],
+              ),
             ],
           ),
         ),
       ],
-    ));
+    );
   }
 }
 

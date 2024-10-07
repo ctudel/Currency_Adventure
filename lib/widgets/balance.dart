@@ -20,13 +20,13 @@ class _BalanceState extends State<Balance> {
 
     return Flexible(
       child: Card(
+        color: cardColor,
         child: Container(
           // Main Container
           alignment: Alignment.topLeft,
           padding:
               const EdgeInsets.only(top: 10, right: 25, bottom: 10, left: 25),
           margin: const EdgeInsets.all(10),
-          decoration: border,
           height: 150,
           // Balance elements
           child: Column(
@@ -36,27 +36,25 @@ class _BalanceState extends State<Balance> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Balance:",
-                      style: TextStyle(color: Colors.black, fontSize: 32)),
+                  const Text("Balance:", style: textStyle),
                   // Deposit Button
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.yellow,
+                      backgroundColor: Colors.blue,
                       elevation: 4,
                     ),
                     onPressed: () {
                       _depositDialog(context);
                     },
                     child: const Text("Deposit",
-                        style: TextStyle(color: Colors.black, fontSize: 26)),
+                        style: TextStyle(color: Colors.white, fontSize: 26)),
                   ),
                 ],
               ),
               // Balance Value
               Container(
                 padding: const EdgeInsets.only(left: 10),
-                child: Text('${bank.vault.balance}',
-                    style: const TextStyle(color: Colors.black, fontSize: 32)),
+                child: Text('\$ ${bank.vault.balance}', style: textStyle),
               ),
             ],
           ),

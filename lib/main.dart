@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                 onSecondary: Colors.white,
                 error: Colors.red,
                 onError: Colors.black,
-                surface: Colors.deepPurple,
+                surface: Colors.blue,
                 onSurface: Colors.white)),
         routes: routes,
       ),
@@ -94,11 +94,10 @@ class MainScaffold extends StatelessWidget {
         title: Text(title),
         actions: [
           // Back to Home button
-          ElevatedButton(
+          IconButton(
+              padding: const EdgeInsets.only(right: 25),
               onPressed: () => home(context),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrangeAccent),
-              child: Icon(Icons.home))
+              icon: const Icon(Icons.home))
         ],
       ),
       // Current Page to Display
@@ -124,10 +123,5 @@ class MainScaffold extends StatelessWidget {
   }
 }
 
-// Container Border
-final BoxDecoration border = BoxDecoration(
-    color: Colors.white,
-    border: Border.all(color: Colors.yellow, width: 2),
-    borderRadius: BorderRadius.circular(20));
 
 // Total points: 60
