@@ -8,7 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:hw4/widgets/bank.dart';
 import 'models/vault.dart';
-import 'routes.dart';
+import 'currency_icons.dart';
+import 'pages/routes.dart';
 
 void main() {
   // Create a GlobalKey that we can pass to child nodes so they can find the instance of the state
@@ -53,9 +54,9 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
             colorScheme: const ColorScheme(
                 brightness: Brightness.light,
-                primary: Colors.yellow,
-                onPrimary: Colors.black,
-                secondary: Colors.yellowAccent,
+                primary: Colors.black,
+                onPrimary: Color.fromRGBO(255, 255, 255, 0.9),
+                secondary: Colors.white,
                 onSecondary: Colors.white,
                 error: Colors.red,
                 onError: Colors.black,
@@ -107,14 +108,12 @@ class MainScaffold extends StatelessWidget {
         indicatorColor: Colors.transparent,
         destinations: const [
           // Currency 1 Button
-          NavigationDestination(
-              icon: Icon(Icons.shop, color: Colors.yellow), label: "Home"),
+          NavigationDestination(icon: Icon(CurrencyIcons.pokeball), label: ""),
           // Currency 2 Button
           NavigationDestination(
-              icon: Icon(Icons.shop_2, color: Colors.yellow), label: "Bed"),
+              icon: Icon(CurrencyIcons.animalCrossing), label: ""),
           // Currency 3 Button
-          NavigationDestination(
-              icon: Icon(Icons.shop, color: Colors.yellow), label: "Star"),
+          NavigationDestination(icon: Icon(CurrencyIcons.zelda), label: ""),
         ],
         onDestinationSelected: (index) =>
             Navigator.pushReplacementNamed(context, paths[index + 1]),

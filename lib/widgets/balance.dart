@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/bank.dart';
-import '../pages/home.dart';
+import '../styles/style.dart';
 
 class Balance extends StatefulWidget {
   const Balance({
@@ -21,6 +21,7 @@ class _BalanceState extends State<Balance> {
     return Flexible(
       child: Card(
         color: cardColor,
+        elevation: 10,
         child: Container(
           // Main Container
           alignment: Alignment.topLeft,
@@ -36,7 +37,7 @@ class _BalanceState extends State<Balance> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Balance:", style: textStyle),
+                  Text("Balance:", style: textStyle),
                   // Deposit Button
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -54,7 +55,8 @@ class _BalanceState extends State<Balance> {
               // Balance Value
               Container(
                 padding: const EdgeInsets.only(left: 10),
-                child: Text('\$ ${bank.vault.balance}', style: textStyle),
+                child: Text('\$ ${bank.vault.balance.toStringAsFixed(2)}',
+                    style: textStyle),
               ),
             ],
           ),
@@ -121,11 +123,18 @@ class _BalanceState extends State<Balance> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   FilledButton(
+                      style: FilledButton.styleFrom(
+                          backgroundColor: Colors.yellow),
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      child: const Text('Cancel')),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(color: Colors.black),
+                      )),
                   FilledButton(
+                      style: FilledButton.styleFrom(
+                          backgroundColor: Colors.yellow),
                       onPressed: () {
                         if (keyForm.currentState != null &&
                             keyForm.currentState!.validate()) {
@@ -133,10 +142,14 @@ class _BalanceState extends State<Balance> {
                           Bank.of(context).deposit(_amount ?? 0);
                           setState(() {});
                         }
-                        if (keyForm.currentState != null)
+                        if (keyForm.currentState != null) {
                           Navigator.pop(context);
+                        }
                       },
-                      child: const Text('Submit')),
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(color: Colors.black),
+                      )),
                 ],
               ),
             ],

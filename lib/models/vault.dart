@@ -31,7 +31,7 @@ class Vault {
 //   checks if the current balance is greater than [amount] and if so debits the current balance and adds the item to
 //   the purchased items. Returns a boolean reflecting whether the purchase succeeded
   bool buy(String item, double amount) {
-    if (_balance > amount) {
+    if (_balance >= amount) {
       _balance -= amount;
       items[item] = items.containsKey(item) // increments item quantity
           ? items[item]! + 1

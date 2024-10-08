@@ -26,7 +26,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.all(10),
-        color: Color.fromRGBO(255, 255, 255, 0.8),
         child: const Column(
           children: [
             // Balance
@@ -39,18 +38,6 @@ class Home extends StatelessWidget {
   }
 }
 
-// Background Image
-const BoxDecoration background = BoxDecoration(
-    image: DecorationImage(
-        image: AssetImage('assets/home.jpg'),
-        fit: BoxFit.cover,
-        alignment: Alignment.bottomLeft));
-
-// Header Text
-const TextStyle textStyle =
-    TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.w400);
-
-const Color cardColor = Color.fromRGBO(255, 255, 255, 0.9);
 
 
 // Total points: 130
