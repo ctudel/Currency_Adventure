@@ -19,6 +19,9 @@ import '../widgets/purchased_items.dart';
 // Your widget should implement the UI as described in the README.md
 // When the user presses the [deposit] button your app should call the helper method _depositDialog()
 
+// NOTE: Main implementation and TODO's were separated into widgets
+// for clarity while developing
+
 class Home extends StatelessWidget {
   const Home({super.key});
 

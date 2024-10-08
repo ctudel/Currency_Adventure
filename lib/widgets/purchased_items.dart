@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import '../styles/style.dart';
 import '../widgets/bank.dart';
 
-class PurchasedItems extends StatefulWidget {
+class PurchasedItems extends StatelessWidget {
   const PurchasedItems({
     super.key,
   });
 
-  @override
-  State<PurchasedItems> createState() => _PurchasedItemsState();
-}
-
-class _PurchasedItemsState extends State<PurchasedItems> {
   @override
   Widget build(BuildContext context) {
     final bank = Bank.of(context);

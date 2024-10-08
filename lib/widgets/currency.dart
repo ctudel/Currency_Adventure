@@ -87,14 +87,12 @@ class _CurrencyState extends State<Currency> {
   Widget itemButton(String name, double conversionRate, double fantasyPrice) {
     final Bank bank = Bank.of(context);
     final double price = fantasyPrice / conversionRate;
-    // print(fantasyPrice);
-    print(widget.itemFantasyPrices[0]);
 
     return Column(
       children: [
         ElevatedButton(
             onPressed: () {
-              bank.vault.buy(name, price);
+              bank.buy(name, price);
               setState(() {});
             },
             style: ElevatedButton.styleFrom(

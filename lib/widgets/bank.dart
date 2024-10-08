@@ -7,10 +7,12 @@
 //
 // The Bank widget is used to give access to the app state, in particular the vault
 //----------------------------------------------------------------------------
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import '../models/vault.dart';
 
 class Bank extends InheritedWidget {
+  final AudioPlayer _player = AudioPlayer();
   final GlobalKey appKey;
   Bank({
     super.key,
@@ -33,9 +35,11 @@ class Bank extends InheritedWidget {
 
     if (vault.buy(item, amount)) {
       // TODO: Play a sound to indicate the purchase succeeded. (15 pts)
+      _player.play(AssetSource('purchase.mp3'));
       return true;
     } else {
       // TODO: Play a sound to indicate the purchase failed. (15 pts)
+      _player.play(AssetSource('denied.mp3'));
       return false;
     }
   }
