@@ -1,7 +1,3 @@
-_Homework 4_
-------------
-_Version 1_
-
 CurrencyQuest
 ============================
 This homework assignment brings together all the concepts we have been introducing and gives you practice working with
