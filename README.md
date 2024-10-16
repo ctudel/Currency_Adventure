@@ -1,4 +1,4 @@
-CurrencyQuest
+CurrencyAdventure
 ============================
 This homework assignment brings together all the concepts we have been introducing and gives you practice working with
 them including:
