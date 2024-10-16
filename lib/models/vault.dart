@@ -1,7 +1,7 @@
 //****************************************************************************
 // vault.dart - Data abstraction for the user's balance and list of purchased items
 //
-// Boise State University CS 402
+// Boise State University
 // Dr. Henderson
 // Homework 4
 //

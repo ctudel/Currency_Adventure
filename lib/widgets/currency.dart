@@ -1,7 +1,7 @@
 //****************************************************************************
 // currency_1.dart - Implements a fictional currency page
 //
-// Boise State University CS 402
+// Boise State University
 // Dr. Henderson
 // Homework 4
 //
@@ -118,6 +118,5 @@ class _CurrencyState extends State<Currency> {
     );
   }
 }
-
 
 // Total points: 50

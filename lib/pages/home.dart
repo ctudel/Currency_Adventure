@@ -1,7 +1,7 @@
 //****************************************************************************
 // home.dart - The home page displayed when the default route is navigated
 //
-// Boise State University CS 402
+// Boise State University
 // Dr. Henderson
 // Homework 4
 //
@@ -40,7 +40,5 @@ class Home extends StatelessWidget {
         ));
   }
 }
-
-
 
 // Total points: 130

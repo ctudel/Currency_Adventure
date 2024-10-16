@@ -1,7 +1,7 @@
 //****************************************************************************
 // bank.dart - A custom inherited widget to allow children access to the vault
 //
-// Boise State University CS 402
+// Boise State University
 // Dr. Henderson
 // Homework 4
 //
